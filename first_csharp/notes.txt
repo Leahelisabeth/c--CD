@@ -1,0 +1,127 @@
+dotnet new
+dotnet restore
+dotnet run
+
+string name = "leah";
+int age = 30;
+double height = 1.875;
+bool blueEyed = true;
+int[] numArray = new int[5]; -- declaring an array of length 5, initialized by default to all zeros as values in arrays
+int[] numArray2 = {1,2,3,4,6}; --for arrays initialized this way, the length is determined by the size of the given data
+    -> can also be written:
+        int[] array3;
+        array3 = new int[] {1,3,5,7,9,12};
+    once an array has initial values set you can change those values like so:
+        array3[0] = 8;
+    iterating through an array regular for loop:
+        string[] myCars = new string[4] {'mazda', 'ford', 'dodge', 'nissan'};
+        for (int i = 0; i <myCars.Length; i++){
+            Console.WriteLine(myCars[i]);
+        } 
+    foreach loop stye:
+        string[] myCars = new String[4] {'mazda', 'ford', 'dodge', 'nissan'};
+        foreach (string car in myCars){
+            Console.WriteLine("i own a {0}", car)
+        }
+    Multidimensional Arrays:
+        int [,] array2D = new [3,2] --this example has 3 arrays -- each of these is length 2 -- all initialized to zeros;
+        IOW: int[,] array2D = new int[3,2] { {0,0}, {0,0}, {0,0} };
+        int[,,] array3D = new int[2,3,4]  {
+            { {45,1,16,17}, {4,47,21,68}, {21,28,32,76} }, --0
+            { {11,0,85,42}, {9,10,14,96}, {66,99,33,12} } --1, in the 0 index, in the 3rd postion
+        };
+        Console.WriteLine(array2D[0,1]);//prints 0
+        Console.WriteLine(array3D[1,0,3]);//prints 42 --Multidimensional arrays must be perfectly rectangular
+    Jagged Arrays- way of creating Multidimensional arrays of diff lengths:
+        int[][] jaggedArray = new int[3][];
+        jaggedArray[0] = new int[5];
+        jaggedArray[1] = new int[4];
+        jaggedArray[2] = new int[2];
+        int[][] jaggedArray2 = new int[][]{
+            new int[] {1,3,5,7,9},
+            new int[] {0,2},
+            new int[] {11,22,33,44}
+        };
+    Short hand form jagged array:
+        int[][] jaggedArray3 = {
+            new int[] {1,3,5,7,9},
+            new int[] {0,2},
+            new int[] {11,22,33,44}
+        };
+    Mixing jagged and Multidimensional arrays: --why not always use jagged arrays jic?
+        int[][,] jaggedArray4 = new int[3][,]{
+            new int[,] { {1,3}, {5,7} },
+            new int[,] { {0,2}, {4,6}, {8,10} },
+            new int[,] { {11,22}, }
+        };
+        foreach(int[] innerArr in jaggedArray){
+            Console.WriteLine("inner array length is {0}", innerArr.Length);
+        }
+        Console.WriteLine(jaggedArray2[0][1]) //gives you 3
+        Console.WriteLine(jaggedArray3[2][3])//gives you 44
+
+Generic Lists:--lists are an implementation of linked lists that act like arrays of other languages, once you make it you can freely add and remove based off index.
+    in order to include lists youi must use this line at the top of your file/project page:
+        using System.Collections.Generic; --when chnaging using run dotnet restore again;
+    from there we can create list to work with:
+        List<string> bikes = new List<string>();
+        bikes.Add("kawasaki");
+        bikes.Add("Mountain");
+        bikes.Add("fixie");
+        Console.WriteLine(bikes[2]); //prints fixie
+        Console.WriteLine("theree are {0} bike manufactures", bikes.Count);
+    what is happening with <string>?:
+        its a generic type. its a way for objects to be created with various types. generics create a blueprint for a List to make diffrent types of lists that function the same outside the data they can hold.
+    Iterating through a list:
+        for (var i = 0; i< bikes.Count; i++){
+            Console.WriteLine(bikes[i]);
+        }
+    Insert item into generic list:
+        bikes.Insert(2, "Yamaha") --inserts bike at specific position 2
+    Remove from generic list:
+        bikes.Remove("fixie") --like pop but finds it at specific value, not index. gives us a return value of what was removed like pop would.
+    however...
+        bikes.RemoveAt(0); --removes first position in list but does not provide us with a return value.
+    Foreach iteration in lists:
+        foreach (string bike in bikes){
+            Console.WriteLine(bike);
+        }
+
+Dictionary Class:
+    it is implemented similarly to Lists and also makes use of generics for how it is instantiated.
+    Dictionary values are not referenced by numerical indexes but key value pairs much like python dictionaries or javascript objects.
+    KEY AND VALUE TYPES MUST EACH BE SPECIFIED!
+        Dictionary<TKey, TValue> --it is also part of Generic library so the following statement: 
+            using System.Collections.Generic;
+        must be used
+        Example:
+            Dictionary<string, string> profile = new Dictionary<string, string>(); <-invoke generic method 
+        almost all methods that exist with lists exist that way for dictionaries
+            profile.Add("name", "Leah");
+            profile.Add("language", "Javascript");
+            profile.Add("location", "Here");
+            Console.WriteLine(profile["name]") //gives you value of name
+        Major diff between list and Dcitionary emerges when iterating through their collections.
+        foreach loop must be changed slightly to return both key and value.
+            foreach (KeyValuePair<string,string> entry in profile){
+                Console.WriteLine(entry.Key, entry.Value);
+            }
+        in order to clean up the KeyValuePair<string, string> line we can us type inference. it is to be used sparingly- only when the type we are working with is easily infered
+            foreach (var entry in profile){
+                Console.WriteLine(entry.Key, entry.Value);
+            }
+
+
+
+type conversion:
+int IntegerValue = 65;
+double DoubleValue = IntegerValue;
+--if values are similar in type they can be conbverted as such, this is impicit casting
+
+double DoubleValue = 3.14159265358;
+int IntegerValue = (int)DoubleValue;
+// IntegerValue == 3
+-- this is explicit casting type conversion
+
+Console.WriteLine("Using Console.WriteLine, you can output any string to the terminal/console");
+
