@@ -17,6 +17,7 @@ namespace ConsoleApplication
             loggerFactory.AddConsole();
             //Use Static Files
             app.UseDeveloperExceptionPage();
+            app.UseStaticFiles();
             // app.Run(async context =>
             // {
             //     await context.Response.WriteAsync();
@@ -24,7 +25,7 @@ namespace ConsoleApplication
             app.UseMvc( routes => 
             routes.MapRoute(
                 name: "Default",
-                template: "",
+                template: "Index",
                 defaults: new {controller = "Hello", action = "Index"}
             ));//always be the last line we execute when adding more junk in this space
         }

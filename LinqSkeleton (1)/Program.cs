@@ -19,14 +19,17 @@ namespace ConsoleApplication
 
             //There is only one artist in this collection from Mount Vernon, what is their name and age?
             Artist vernonQ = Artists.Where(artist => artist.Hometown =="Mount Vernon").Single();
+            System.Console.WriteLine(vernonQ.ArtistName);
             //vernonQ.Age, 
             //Who is the youngest artist in our collection of artists?
             Artist youngA = Artists.OrderBy(artist => artist.Age).First();
+            System.Console.WriteLine(youngA.ArtistName);
             //Display all artists with 'William' somewhere in their real name
             List<Artist> wills = Artists.Where(artist => artist.RealName.Contains("William")).ToList();
 
             //Display the 3 oldest artist from Atlanta
-            List<Artist> old3 = Artists.Where(artist => artist.Hometown =="Atlanta").OrderByDescending(artist => artist.Age)
+            List<Artist> old3 = Artists.Where(artist => artist.Hometown =="Atlanta")
+                .OrderByDescending(artist => artist.Age)
                 .Take(3)
                 .ToList();
             //Display names of all groups less than 8 char in length
@@ -38,7 +41,7 @@ namespace ConsoleApplication
                             return artist;
                             }).Where(artist => (artist.Hometown != "New York City" && artist.Group != null))
                             .Select(artist => artist.Group.GroupName)
-                            .Distinct()
+                            .Distinct()//prevents duplicate values in a list
                             .ToList();
             //(Optional) Display the artist names of all members of the group 'Wu-Tang Clan'
 

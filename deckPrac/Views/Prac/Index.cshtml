@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/style.css" rel="stylesheet">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var counter = 0;
+            var counter2 = 0;
+                $('img').click(function(){
+                    if(counter < 2){
+                        $(this).data('data-alt-src', $(this).attr('src'));
+                        $(this).attr('flipped-attr', true)
+                        $(this).attr('src', $(this).attr('data-alt-src'));
+                        $(this).attr('data-alt-src', $(this).data('data-alt-src'));
+                        console.log(counter);
+                        counter++
+                        counter2++
+                    }
+                    else{
+                        counter =0;
+                        reset();
+                    }
+                
+            });
+            function reset(){
+                $.each($('img'), function(idx){
+                    
+                    console.log($(this))
+                    if($(this).attr('flipped-attr')){
+                        console.log("working")
+                        $(this).attr('src', $(this).data('data-alt-src'));
+                        $(this).attr('flipped-attr', false)
+                        
+                    }
+                })
+            }
+
+        });
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+        
+        
+        
+        @{
+        foreach(var card in @ViewBag.mydeck.cards){
+            <img data-alt-src="/css/images/@card.imgsrc" src="/css/images/back.png" flipped-attr="false" width="80"/>
+            
+        }
+        <h1>yo</h1>
+        
+        
+    }
+    </div>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>my html views</h1>
+        <p>//new we tell our controller to serve this view</p>
+    <p>we can use razor view engine here to write C# directly inrto our views:</p>
+    @{
+        var stringlist = new List<string>{
+            "one",
+            "two",
+            "three",
+            "four"
+            };
+        foreach(var word in stringlist){
+            <div>
+            <p>@word</p>
+            @if(word.Length < 4){
+                <p>@word is a short word</p>
+            }
+            </div>
+            //techinically being inside the div made this if statement html, so
+            //the c# code block reference must be specified again.
+            //Any C# operation or method call can be made outside of a 
+            //C# code block (@{ }) by leading the operation/method call with the @
+        }
+    }
+    </body>
+</html>

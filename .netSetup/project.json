@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
+  },
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+        "type": "platform",
+        "version": "1.0.0"
+      },
+      "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+      "Microsoft.AspNetCore.Mvc": "1.0.0",
+      "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+      "Microsoft.Extensions.Logging.Console": "1.0.0",
+      "Microsoft.AspNetCore.StaticFiles": "1.0.0"
+  },
+  "tools": {
+    "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview4-final"
+  },
+  "frameworks": {
+    "netcoreapp1.0": {}
+  }
+}
+//kestrel lets us run apps on our localhost
+//.Mvc is literally our whole //.Mvc
+//diagnostics giives us adetailed error page buyilt for us c: so we can know whats going wrong
+  //we can with diagnostoic .usedeveloperpageexceptoin middlewarwe
+//logging.console prodces a readout in our terminal displaying response codes from http reqs
+  //lets us use loggerfactory but we also mut use "Microsoft.Extensions.Logging;" at the top of the pg
+//presevre "preserveCompilationContext"true, is required for our compil;ation of views. 
+//it defaults to false for faste performance if our backenmd was configued to only render jsonm asn as api.
+//once this is flagged true out MVC apps views are compiled at runtime b/c of this we dont even
+//need to restart our server after editing out .cshtml files. we just refresh t see changes.
+//needed to add usestaticfiles in order to serve up my index.cshtml

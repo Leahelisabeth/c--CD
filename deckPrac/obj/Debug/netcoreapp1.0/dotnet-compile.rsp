@@ -48,6 +48,7 @@
 --reference:C:\Users\Leah\.nuget\packages\Microsoft.AspNetCore.Routing\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Routing.dll
 --reference:C:\Users\Leah\.nuget\packages\Microsoft.AspNetCore.Routing.Abstractions\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Routing.Abstractions.dll
 --reference:C:\Users\Leah\.nuget\packages\Microsoft.AspNetCore.Server.Kestrel\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Server.Kestrel.dll
+--reference:C:\Users\Leah\.nuget\packages\Microsoft.AspNetCore.StaticFiles\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.StaticFiles.dll
 --reference:C:\Users\Leah\.nuget\packages\Microsoft.AspNetCore.WebUtilities\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.WebUtilities.dll
 --reference:C:\Users\Leah\.nuget\packages\Microsoft.CodeAnalysis.Common\1.3.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll
 --reference:C:\Users\Leah\.nuget\packages\Microsoft.CodeAnalysis.CSharp\1.3.0\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll
@@ -162,6 +163,10 @@
 --reference:C:\Users\Leah\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Leah\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Leah\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
+--resource:"C:\Users\Leah\codingdojo\deckPrac\obj\Debug\netcoreapp1.0\deckPracdotnet-compile.deps.json",deckPrac.deps.json
+C:\Users\Leah\codingdojo\deckPrac\Card.cs
+C:\Users\Leah\codingdojo\deckPrac\Deck.cs
+C:\Users\Leah\codingdojo\deckPrac\Player.cs
 C:\Users\Leah\codingdojo\deckPrac\Program.cs
 C:\Users\Leah\codingdojo\deckPrac\Startup.cs
-C:\Users\Leah\codingdojo\deckPrac\Controllers\PracControl.cs
+C:\Users\Leah\codingdojo\deckPrac\Controllers\PracController.cs

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="yo">
+        <h1>A New Blank Project with everything you need <3</h1>
+        <h4>@ViewBag.Example</h4>
+        
+
+        <form action="survey" method="post">
+
+            <br><input type="text" name="Name" placeholder="Your Name">
+            <br>Location
+            <br><select name="Local">
+                    <option value="Chicago">Chicago</option>
+                    <option value="Sanfran">SanFran</option>
+                    <option value="Seattle">Seatt;e</option>
+
+                </select>
+            <br>Favorite Language
+            <br><select name="Lang" >
+                    <option value="python">Python</option>
+                    <option value="c#">C#</option>
+                    <option value="JavaScript">JavaScript</option>
+                </select>
+            <br><textarea name="Comm" placeholder="Comments"></textarea>
+            <br><input type="submit" name="" value="Submit">
+        </form>
+
+    @{
+        DateTime CurrentTime = DateTime.Now;
+        <div>@CurrentTime</div>
+        
+        }
+        </div>
+    </body>
+</html>
