@@ -1,0 +1,38 @@
+    @{
+    ViewData["Title"] = "Plan a New Wedding";
+}
+@model wedding.Models.EventViewModel
+
+<div>   
+    <h1>Welcome @ViewBag.UserName</h1>
+    <h3>@ViewBag.UserId</h3>
+
+
+<form asp-controller="Event" asp-action="Plan" method="post">
+    <br><label asp-for="Spouse">Name:</label><input id="Spouse" type="text" asp-for="Spouse" value="@ViewBag.UserName">
+    <span asp-validation-for="Spouse"></span>
+
+    <label asp-for="SpouseTitle">Title:</label><select asp-for="SpouseTitle" id="SpouseTitle">
+        <option value="Bride">Bride</option>
+        <option value="Groom">Groom</option>
+    </select>
+    <span asp-validation-for="SpouseTitle"></span>
+
+
+    <br><label asp-for="SndSpouse">Name:</label><input id="SndSpouse" type="text" asp-for="SndSpouse">
+    <span asp-validation-for="SndSpouse"></span>
+
+    <label asp-for="SndSpouseTitle">Title:</label><select asp-for="SndSpouseTitle" id="SndSpouseTitle">
+        <option value="Bride">Bride</option>
+        <option value="Groom">Groom</option>
+    </select>
+    <span asp-validation-for="SndSpouseTitle"></span>
+
+
+    <br><label asp-for="WedDay">Date:</label><input id="WedDay" type="date" asp-for="WedDay">
+    <span asp-validation-for="WedDay"></span>
+    
+    <br><input type="submit" value="submit">
+</form>
+
+</div>

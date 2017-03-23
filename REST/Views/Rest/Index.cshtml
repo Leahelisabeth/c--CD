@@ -1,0 +1,53 @@
+@model REST.Models.Reviews
+<div>   
+    @{
+    foreach(var user in @ViewBag.AllUsers){
+        <p>@user.UserName</p>
+
+    }
+    foreach(var rev in @ViewBag.AllReview){
+        <p>@rev.Content</p>
+
+    }
+    foreach(var rest in @ViewBag.AllRest){
+        <p>@rest.Name</p>
+
+    }
+}
+@{
+    foreach(var error in @ViewBag.errors){
+        if(@error.Errors.Count > 0)
+            {
+                // We show the first error for that field
+                <p style="color:red">@error.Errors[0].ErrorMessage</p>
+            }
+}
+}
+
+<form asp-controller="Rest" asp-action="add" method="post">
+<br> Choose from a list of existing Restaurants...
+<br><select>@{
+    foreach(var rest in @ViewBag.AllRest){
+        <option value="@rest.id">@rest.Name</option>
+
+    }
+}
+</select>
+    <br><p>Or Add a New Restaurant...</p>
+    <input type="text" name="Name">
+    <span asp-validation-for="Content"></span>
+    <br><Textarea asp-for="Content">  </Textarea>
+        <span asp-validation-for="DateVisit"></span>
+    <br><input type="date" asp-for="DateVisit">
+        <span asp-validation-for="Rating"></span>
+    <br><Select asp-for="Rating">    
+        <option type="number" value="1">1</option>
+        <option type="number" value="2">2</option>
+        <option type="number" value="3">3</option>
+        <option type="number" value="4">4</option>
+        <option type="number" value="5">5</option>
+    </Select>
+    <input type="submit" value="Add Review">
+    </form>
+
+</div>

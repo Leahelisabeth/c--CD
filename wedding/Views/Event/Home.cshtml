@@ -1,0 +1,24 @@
+
+<div>   
+    <table> 
+        <tr>    
+            <th>Title</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    @{
+            for(var idx = 0; idx < @ViewBag.AllEvents.Count; idx++)
+            {
+                <tr> 
+                        <td> @ViewBag.AllEvents[idx].Spouse and @ViewBag.AllEvents[idx].SndSpouse's wedding</td>
+                        <td> @ViewBag.AllEvents[idx].WedDay</td>
+                        <td>
+                            <a href="/Rsvp/@ViewBag.AllEvents[idx].id">RSVP</a>
+                        </td>
+                </tr>
+            }
+        }
+        </table>
+        <a href="/Register">Plan a Wedding?</a>
+
+</div>

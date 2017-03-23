@@ -1,0 +1,14 @@
+@model REST.Models.User
+<div>   
+    @{
+    foreach(var error in @ViewBag.errors){
+        <p style="color:red">@error.Errors.ErrorMessage</p>
+    }
+}
+    <form asp-controller="Rest" asp-action="Registers" method="post">
+        <span asp-validation-for="UserName"></span>
+    <br><input type="text" asp-for="UserName" placeholder="Your Name">
+    <input type="submit" value="Add Review">
+</form>
+
+</div>

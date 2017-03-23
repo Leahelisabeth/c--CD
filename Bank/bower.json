@@ -1,0 +1,8 @@
+{
+  "name": "Bank",
+  "private": true,
+  "dependencies": {
+    "bootstrap" : "3.3.6"
+    
+  }
+}

@@ -1,0 +1,70 @@
+Key: ~ == done
+//////////////////////////////////////////////////////////////////////////////////
+    NOTES:
+    do not need to use dbconnector file of have mysqloptions.cs because in dapper those
+    would be helpful for customizing my project but entity does not allow such customization
+
+/////////////////////////////////////////////////////////////////////////////////
+make models folder ~
+appsettings.json ~
+gitignore appsettings.json ~
+Project.json    
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0" ~
+    "MySql.Data": "7.0.6-IR31" ~
+    "MySql.Data.EntityFrameworkCore": "7.0.6-IR31" ~
+**************************************************************************************
+startup.cs 
+    using Microsoft.Extensions.Configuration;~
+    using Microsoft.AspNetCore.Hosting;~
+    using YourNamespace.Models;~
+    using MySQL.Data.EntityFrameworkCore.Extensions;~
+
+    Code block for config: ~
+            public IConfiguration Configuration { get; private set; }
+            
+            public Startup(IHostingEnvironment env)
+            {
+                var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+                Configuration = builder.Build();
+            }
+    In configure srvices : ~
+            services.AddDbContext<YourContext>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
+**********************************************************************************************
+controller setup code block:
+                        namespace YourNamespace.Controllers
+                        {
+                            public class YourController : Controller
+                            {
+                                private YourContext _context;
+                                public YourController(YourContext context)
+                                {
+                                    _context = context;
+                                }
+                        
+                                [HttpGet]
+                                [Route("")]
+                                public IActionResult Index()
+                                {
+
+                                    // Other code
+                                }
+                            }
+                        }
+************************************************************************************
+Models folder > YourContext.cs:~
+
+            using Microsoft.EntityFrameworkCore;
+            namespace YourNamespace.Models
+            {
+                public class YourContext : DbContext
+                {
+                    // base() calls the parent class' constructor passing the "options" parameter along
+                    public YourContext(DbContextOptions<YourContext> options) : base(options) { }
+                }
+            }
+
+
+

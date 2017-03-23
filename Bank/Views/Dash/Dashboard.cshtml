@@ -1,0 +1,32 @@
+@model Bank.Models.TransactionViewModel
+<h1>Welcome @ViewBag.UserName</h1>
+<h3>Balance: $@ViewBag.MyUser.Balance</h3>
+
+<form action="Logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+<form asp-action="AddTake" asp-route-userid="@ViewBag.UserId" asp-controller="Dash" method="Post">
+<input type="number" step="0.01" asp-for="AddTake" max="" placeholder="0.00" min="-@ViewBag.MyUser.Balance" >
+<input type="submit" value="submit">
+</form>
+<table>     
+    <tr>
+        <th>Transaction Amount</th>
+        <th></th>
+        <th>Date</th>   
+    </tr>
+    
+        @{
+            foreach(var trans in @ViewBag.Transactions)
+        {
+            <tr>
+            <td>$@trans.AddTake</td>
+            <td>   ...     </td>
+            <td>@trans.UpdatedAt</td>
+            </tr>
+        }
+        
+        }
+
+
+</table>

@@ -1,0 +1,28 @@
+<h1> Hello, @ViewBag.UserName @ViewBag.UserId</h1>
+<h1>View All Users</h1>
+<form action="/Logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+
+<h6 style="color:red">@ViewBag.NewError</h6>
+<table class="table">     
+    <tr>    
+        <th>Id</th>
+        <th>Name^</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>User Level</th>
+    </tr>
+    @{
+        foreach(var user in @ViewBag.Allusers)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.CreatedAt.ToString("MMM, dd, yyyy")</td>
+                <td>@user.UserLevel</td>
+            </tr>
+        }
+    }
+</table>

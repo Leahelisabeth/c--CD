@@ -1,0 +1,27 @@
+<div>
+    <h1>@ViewBag.UserName, @ViewBag.users_id</h1>
+<form action="Logout" method="post"><input type="submit" value="Logout"></form>
+<form action="AddMsg" method="post">
+    <br>
+    <br><Textarea placeholder="Type your message here..." name="content" cols="60" rows="6"></Textarea>
+    <br><input type="submit" value="Add Message">
+</form>
+@{
+    foreach(var msg in @ViewBag.allmessages){
+        <blockquote>
+            <h3>@msg.content</h3>
+        </blockquote>
+        <h6>Post made by-- @msg.user.FirstName</h6>
+        <form action="AddCm/@msg.id" method="post">
+        <Textarea name="commentbody">
+        </Textarea>
+        <input type="submit" value="add comment">
+        </form>
+        
+        foreach(var cm in @msg.comments){
+            <blockquote><h5>@cm.commentbody</h5></blockquote>
+            <h6> commented by-- @cm.user.FirstName</h6>
+        }
+    }
+}
+</div>

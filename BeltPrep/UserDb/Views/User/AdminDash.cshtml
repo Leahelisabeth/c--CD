@@ -1,0 +1,47 @@
+<script>
+function myFunction() {
+    var txt;
+    var r = confirm("Are you sure you want to delete this user?");
+    if (r == true) {
+        txt ='<input style="background: none;border:none;color:red" type="submit" value="Delete">';
+        document.getElementById("gone").innerHTML = "";
+    } else {
+        txt = "The user will not be deleted";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+<h1> Hello, @ViewBag.UserName @ViewBag.UserId</h1>
+<h1>Manage Users</h1>
+<form action="/Logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+<div class="alert"> @ViewBag.NewError </div>
+<table class="table">     
+    <tr>    
+        <th>Id</th>
+        <th>Name^</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>User Level</th>
+        <th>actions</th>
+    </tr>
+    @{
+        foreach(var user in @ViewBag.Allusers)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.CreatedAt.ToString("MMM, dd, yyyy")</td>
+                <td>@user.UserLevel</td>
+                <td> 
+                    <a href="">edit</a> 
+                    <form action="Remove/{@user.UserId}" method="post"><span id="demo"> </span></form>
+                    <span id="gone"><button style="background: none;border:none;color:#337ab7" onclick="myFunction()">remove</button></span>
+
+                </td>
+            </tr>
+        }
+    }
+</table>

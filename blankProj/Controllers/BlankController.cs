@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace BlankApp.Controllers
 {
+    // Somewhere in your namespace, outside other classes
     public class BlankController : Controller
     {
         //controller methods can return strings but we would rather 
@@ -44,9 +47,19 @@ namespace BlankApp.Controllers
             HttpContext.Session.SetInt32("UserAge", 28);
             // To retrieve an int we use ".GetInt32"
             int? IntVariable = HttpContext.Session.GetInt32("UserAge");
+            List<object> NewList = new List<object>();
+            NewList.Add(new{motorcycle = "Kawasaki", jacket = "Bomber"});
+
+            HttpContext.Session.SetObjectAsJson("TheList", NewList);
+            //internet told me to useHTTPContext.Session-- Link here:
+            //http://benjii.me/2015/07/using-sessions-and-httpcontext-in-aspnet5-and-mvc6/
+
+            // Notice that we specify the type ( List ) on retrieval
+            
             // Will redirect to the "OtherMethod" method
             //using an anon object lets us pass params to our redirected methods. 
             //here i passed throiugh form data
+            TempData["Variable"] = "Hello World";
             return RedirectToAction("SecondEx", "Second", new { value = Value });
         }
     }

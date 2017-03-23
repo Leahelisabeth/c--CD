@@ -1,0 +1,18 @@
+@model wedding.Models.GuestViewModel
+    @{
+    ViewData["Title"] = "Attend this Wedding";
+}
+
+<div>   
+    <form asp-action="attend" asp-controller="Guest" method="Post">
+        <br><label asp-for="Name">Name: </labeL><input type="text" asp-for="Name" id="Name">
+        <span asp-validation-for="Name"></span>
+        <br><label asp-for="GuestOf">Which side of the wedding are you a guest of?</label> 
+        <br><select asp-for="GuestOf" id="GuestOf">
+            <option value="@ViewBag.ThisEvent.Spouse">@ViewBag.ThisEvent.Spouse</option>
+            <option value="@ViewBag.ThisEvent.SndSpouse">@ViewBag.ThisEvent.SndSpouse</option>
+        </select>
+        <span asp-validation-for="GuestOf"></span>
+        <br><input type="submit" value="Attend">
+    </form>
+</div>
